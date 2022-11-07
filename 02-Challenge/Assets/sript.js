@@ -1,4 +1,35 @@
+var gameButton = document.createElement("Button");
+// var gameStart = document.getElementById("myBtn");
+
+
+
+gameButton.textContent ="Start Game";
+// myBtn.textContent = "Start Game";
+
+
+
+document.body.appendChild(li);
+// document.button.append(myBtn);
+
+
+
+
+
 // WHEN I click the start button
+gameStart.addEventListener("click", function() {
+    // If mode is dark, apply light background
+    if (mode === "dark") {
+      mode = "light";
+      container.setAttribute("class", "light");
+    }
+    // If mode is light, apply dark background 
+    else {
+      mode = "dark";
+      container.setAttribute("class", "dark");
+    }
+  });
+  
+
 // THEN a timer starts and I am presented with a question
 // WHEN I answer a question
 // THEN I am presented with another question
