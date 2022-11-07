@@ -1,16 +1,3 @@
-var gameButton = document.createElement("Button");
-// var gameStart = document.getElementById("myBtn");
-
-
-
-gameButton.textContent ="Start Game";
-// myBtn.textContent = "Start Game";
-
-
-
-document.body.appendChild(li);
-// document.button.append(myBtn);
-
 
 
 
@@ -31,6 +18,22 @@ gameStart.addEventListener("click", function() {
   
 
 // THEN a timer starts and I am presented with a question
+function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+  
+      if(secondsLeft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        // Calls function to create and append image
+        sendMessage();
+      }
+  
+    }, 1000);
+  }
+
 // WHEN I answer a question
 // THEN I am presented with another question
 // WHEN I answer a question incorrectly
