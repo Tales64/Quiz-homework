@@ -5,18 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./02-Challenge/Assets/sript.js"> </script>
+    <link rel="stylesheet" href="./Assets/style.css">
 </head>
 <body>
     <section>
         <ul>
-            <li>
-                <!-- <button>
+            <li id="navDis">
+                <div id="timeLeft">10</div>
+                <button id="start">
                     Start
-                </button> -->
+                </button>
+                <div>0</div>
             </li>
         </ul>
     </section>
-    
+    <section id="contain">
+
+        <p class="box-question" id="question"></p>
+    </section>
+    <section>
+        <ul id="container">
+            <li class="box" id="answer1"></li>
+            <li class="box" id="answer2"></li>
+            <li class="box" id="answer3"></li>
+            <li class="box" id="answer4"></li>
+        </ul>
+    </section>
+    <script src="./Assets/sript.js"> </script>
 </body>
 </html>
