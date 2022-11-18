@@ -3,8 +3,9 @@
 
 var startButton = document.querySelector("#start")
 var timer = document.querySelector("#timeLeft")
-var secondsLeft = 100
+var scorePlace = document.querySelector("#scorePlace")
 var questionIndex = 0
+var score = 0
 const question = [
     {
         quest: "How many woodchucks?",
@@ -37,7 +38,7 @@ startButton.addEventListener("click", function() {
     setTime();
     startQuiz();
 });
-
+var secondsLeft = (question.length*10)
 function startQuiz(){
 nextQuestion()
 }
@@ -57,11 +58,20 @@ function nextQuestion(){
         answer3.textContent = question[questionIndex].choices[2];
         answer4.textContent = question[questionIndex].choices[3];
         
-}
+    }
+    // // WHEN I answer a question
+    // // THEN I am presented with another question
     function questionClick (event){
-    var clickbutton = event.target
-    if (clickbutton.textContent == question[questionIndex].corr){
-        document.getElementById("feedback").textContent = "Right"
+        var clickbutton = event.target
+        if (clickbutton.textContent == question[questionIndex].corr){
+            document.getElementById("feedback").textContent = "Right"
+            var points = (questionIndex + 1)
+            var currentPoints = parseInt(points)
+            score += currentPoints  
+            scorePlace.textContent = score
+            console.log(points)
+            console.log(currentPoints)
+            console.log(score)
         questionIndex++
         if (secondsLeft <=0 || questionIndex === question.length){
             endQuiz();
@@ -130,8 +140,6 @@ function setTime() {
     }, 1000);
   }
 
-// // WHEN I answer a question
-// // THEN I am presented with another question
 // for (let index = 0; index < array.length; index++) {
 //     const element = array[index];
 
