@@ -3,7 +3,8 @@
 
 var startButton = document.querySelector("#start")
 var timer = document.querySelector("#timeLeft")
-var secondsLeft = 10
+var secondsLeft = 100
+var questionIndex = 0
 const question = [
     {
         quest: "How many woodchucks?",
@@ -12,23 +13,23 @@ const question = [
     },
     {
         quest: "How many bears?",
-        corr: 3,
-       choices: [35,46,3,12]
+        corr: 16,
+       choices: [35,46,16,12]
     },
     {
         quest: "How many ducks?",
-        corr: 3,
-       choices: [35,46,3,12]
+        corr: 17,
+       choices: [35,46,17,12]
     },
     {
         quest: "How many chimps?",
-        corr: 3,
-       choices: [35,46,3,12]
+        corr: 18,
+       choices: [35,46,18,12]
     },
     {
         quest: "How many dogs?",
-        corr: 3,
-       choices: [35,46,3,12]
+        corr: 19,
+       choices: [35,46,19,12]
     }
 ]
 startButton.addEventListener("click", function() {
@@ -38,23 +39,66 @@ startButton.addEventListener("click", function() {
 });
 
 function startQuiz(){
+nextQuestion()
 }
 
-for (let i = 0; i < question.length; i++) {
-    // the questions and answers in their own boxes
-    var currentQuest = document.querySelector("#question");
-    var answer1 = document.querySelector("#answer1");
-    var answer2 = document.querySelector("#answer2");
-    var answer3 = document.querySelector("#answer3");
-    var answer4 = document.querySelector("#answer4");
-    currentQuest.textContent = question[i].quest;
-    answer1.textContent = question[i].choices[0];
-    answer2.textContent = question[i].choices[1];
-    answer3.textContent = question[i].choices[2];
-    answer4.textContent = question[i].choices[3];
-    
+function nextQuestion(){
+    console.log(question[questionIndex].corr)
+     
+        // the questions and answers in their own boxes
+        var currentQuest = document.querySelector("#question");
+        var answer1 = document.querySelector("#answer1");
+        var answer2 = document.querySelector("#answer2");
+        var answer3 = document.querySelector("#answer3");
+        var answer4 = document.querySelector("#answer4");
+        currentQuest.textContent = question[questionIndex].quest;
+        answer1.textContent = question[questionIndex].choices[0];
+        answer2.textContent = question[questionIndex].choices[1];
+        answer3.textContent = question[questionIndex].choices[2];
+        answer4.textContent = question[questionIndex].choices[3];
+        
 }
+    function questionClick (event){
+    var clickbutton = event.target
+    if (clickbutton.textContent == question[questionIndex].corr){
+        document.getElementById("feedback").textContent = "Right"
+        questionIndex++
+        if (secondsLeft <=0 || questionIndex === question.length){
+            endQuiz();
+        }
+        else{
+            nextQuestion();
+        }
+    }
+    else{
+        secondsLeft -= 10
+        if (secondsLeft <= 0){
+            secondsLeft = 0
+        }
+        timer.textContent = secondsLeft;
+        document.getElementById("feedback").textContent = "Wrong"
+        questionIndex++
+        if (secondsLeft <=0 || questionIndex === question.length){
+            endQuiz();
+        }
+        else{
+            nextQuestion();
+        }
+    }
+        
+    }
+    // setTimeout(function () {
+    //     document.getElementById("feedback").setAttribute("style", "display: none")
+    // },)
 
+function endQuiz(){
+    // to be completed
+}
+document.querySelector("#answer1").addEventListener("click", questionClick)
+document.querySelector("#answer2").addEventListener("click", questionClick)
+document.querySelector("#answer3").addEventListener("click", questionClick)
+document.querySelector("#answer4").addEventListener("click", questionClick)
+// answer1.addEventListener("click", startQuiz)
 // WHEN I click the start button
 // gameStart.addEventListener("click", function() {
 //     if (mode === "dark") {

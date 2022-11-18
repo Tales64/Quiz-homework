@@ -34,5 +34,7 @@ justify-content: center;
     border-color: rgb(12, 24, 20);
     margin: 10px;
 }
-
+.hide {
+display: none;
+}
 
